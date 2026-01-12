@@ -1,0 +1,17 @@
+{
+    "name": "youcode/mvc",
+    "description": "Projet MVC PHP from scratch",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yassir cherqui",
+            "email": "yassirch245@gmail.com"
+        }
+    ],
+    "require": {}
+}
