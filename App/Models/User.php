@@ -92,28 +92,25 @@ class User{
 
     }
 
-            public function findAll() {
+   public function findAll() {
         $query = "SELECT * FROM users";
-        $statement = $this->conection->prepare($query);
-        $statement->setFetchMode(PDO::FETCH_CLASS, User::class);
-        $statement->execute();
-        return $statement->fetchAll();
+        $stmt = $this->conection->prepare($query);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, User::class);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
-
-    // public function update() {
-    //     $query = 
-    //         "UPDATE auteurs 
-    //         SET firstname='" . $this->firstname . 
-    //             "' , lastname='". $this->lastname . 
-    //         "' WHERE id = " . $this->id.";";
-       
-    //     $this->conection->prepare($query)->execute();
-    // }
+    public function getUser($email) {
+    $query = "SELECT * FROM users WHERE email = ?";
+    $stmt = $this->conection->prepare($query);
+    $stmt->execute([$email]);
+    $stmt->setFetchMode(PDO::FETCH_CLASS, User::class);
+    return $stmt->fetch();
+   }
 
     public function create() {
-        $query = "INSERT INTO users (`firstname`, `lastname`,`email`,`password`,`role`)
-                 VALUES (?, ?,?,?,?)";
-        
+        $query = "INSERT INTO users
+            (`firstname`, `lastname`,`email`,`password`,`role`)
+            VALUES (?, ?,?,?,?)";
         $statement = $this->conection->prepare($query);
         $statement->execute([$this->firstname, $this->lastname, $this->email,$this->password,$this->role]);
 

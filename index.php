@@ -29,7 +29,14 @@ switch ($path) {
             $controller->create();
         } 
 
-         $controller->index();
+         $controller->index('register');
+     break;
+    case '/login':
+         $controller = new AuthController();
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $controller->login();
+        } 
+         $controller->index('login');
      break;
    case '/user':
          $controller = new FrontController();

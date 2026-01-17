@@ -2,7 +2,6 @@
 
 class FrontController{
     public function index(){
-    echo"  frontcontroler";
-     $this->view('home');
+     require 'App\Views\front\home.php';
    }
 }
