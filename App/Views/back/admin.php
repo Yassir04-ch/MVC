@@ -10,34 +10,55 @@
 </head>
 
 <body>
-    <table class="table">
-        <thead>
+
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="#">MySite</a>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <span class="nav-link">Hello, <?= $_SESSION['firstname']; ?>!</span>
+
+                </li>
+            </ul>
+        </div>
+         <div class="card-body text-center">
+             <a href="/logout" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+</nav>
+<div class="container mt-5">
+    <h3 class="mb-4">Users List</h3>
+    <table class="table table-bordered">
+        <thead class="table-light">
             <tr>
-                <th scope="col">id</th>
-                <th scope="col">Firstname</th>
-                <th scope="col">Lastname</th>
-                <th scope="col">Email</th>
-                <th scope="col">Role</th>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($users as $user): ?>
-                <tr>
-                    <th scope="row"><?= $user->getId() ?></th>
-                    <td><?= $user->getFirstname() ?></td>
-                    <td><?= $user->getLastname() ?></td>
-                    <td><?= $user->getEmail() ?></td>
-                    <td><?= $user->getRole() ?></td>
-                </tr>
+            <?php foreach($users as $user): ?>
+            <tr>
+                <td><?= $user->getId(); ?></td>
+                <td><?= $user->getFirstname(); ?></td>
+                <td><?= $user->getLastname(); ?></td>
+                <td><?= $user->getEmail(); ?></td>
+                <td><?= $user->getRole(); ?></td>
+                <td>
+                     <a href="/edit?id=<?= $user->getId(); ?>" class="btn btn-sm btn-warning">Edit</a>
+                     <a href="/delete?id=<?= $user->getId(); ?>" class="btn btn-sm btn-danger" >Delete</a>
+                </td>
+            </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+</div>
 
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>

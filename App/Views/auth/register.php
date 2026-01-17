@@ -36,11 +36,7 @@
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="role" class="form-label">Role</label>
-                            <input type="text" class="form-control" id="role" name="role" placeholder="Enter role (user/admin)" required>
+                            <input type="hidden" name="role" value="user">
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">Register</button>

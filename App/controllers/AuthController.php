@@ -1,4 +1,7 @@
 <?php
+require_once __DIR__ . '/../Core/Session.php';
+
+use App\Core\Session;
 use App\Models\User;
 class AuthController{
       public function index($page) {
@@ -28,8 +31,7 @@ class AuthController{
     }
 
   public function login() {
-    session_start();  
-
+     Session::start();
     $email = $_POST['email'];
     $password = $_POST['password'];
     
@@ -37,19 +39,24 @@ class AuthController{
     $user = $usermod->getUser($email);
 
     if ($user && $password == $user->getPassword()) {
-        $_SESSION['firstname'] = $user->getFirstname();
+         Session::setSession('firstname', $user->getFirstname());
+         Session::remove('error');
         if ($user->getRole() === 'admin') {
             header("Location: /admin");
-            exit;
         } else {
             header("Location: /user");
-            exit;
         }
     } else {
-        $_SESSION['error'] = "Email or password is incorrect";
+        Session::setSession('error', "Email or password is incorrect");
         header("Location: /login");
-        exit;
-    }
+     }
+
+}
+
+public function logout(){
+   Session::start();
+    Session::destroy();
+    header("Location: /login");
 }
 
 

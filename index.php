@@ -38,11 +38,25 @@ switch ($path) {
         } 
          $controller->index('login');
      break;
+      case '/logout':
+         $controller = new AuthController();
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            $controller->logout();
+        } 
+         $controller->index('login');
+     break;
+     case '/delete':
+         $controller = new AdminController();
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            $controller->delete();
+        } 
+         $controller->index();
+     break;
    case '/user':
          $controller = new FrontController();
           $controller->index();
         break;
     default : 
          $controller = new AuthController();
-             $controller->index();
+             $controller->index('login');
 }

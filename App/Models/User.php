@@ -108,15 +108,19 @@ class User{
    }
 
     public function create() {
-        $query = "INSERT INTO users
+        $sql = "INSERT INTO users
             (`firstname`, `lastname`,`email`,`password`,`role`)
             VALUES (?, ?,?,?,?)";
-        $statement = $this->conection->prepare($query);
-        $statement->execute([$this->firstname, $this->lastname, $this->email,$this->password,$this->role]);
+        $stmt = $this->conection->prepare($sql);
+        $stmt->execute([$this->firstname, $this->lastname, $this->email,$this->password,$this->role]);
 
         $this->id = $this->conection->lastInsertId();
     }
- 
+ public function deletuser($id){
+    $sql = "DELETE FROM users WHERE id = ?";
+    $stmt = $this->conection->prepare($sql);
+    $stmt->execute([$id]);
+ }
 
     
 }

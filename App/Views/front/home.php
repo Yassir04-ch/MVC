@@ -14,7 +14,7 @@ session_start();
 
  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="#">MySite</a>
+        <a class="navbar-brand" href="">MySite</a>
         <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
                 <li class="nav-item">

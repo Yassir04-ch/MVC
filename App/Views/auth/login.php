@@ -19,7 +19,9 @@
                     <h3 class="card-title text-center mb-4">Login</h3>
 
                     <form method="POST">
-         <h5 class="card-title text-center  text-danger  mb-4"><?= $_SESSION['error'] ?></h5> 
+                        <?php if(isset($_SESSION['error'] )):;?>
+                           <h5 class="card-title text-center  text-danger  mb-4"><?= $_SESSION['error'] ?></h5> 
+                        <?php endif;?>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
