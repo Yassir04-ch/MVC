@@ -5,18 +5,7 @@ use App\Core\Session;
 use App\Models\User;
 class AuthController{
       public function index($page) {
-       switch ($page) {
-        case 'login':
-            require 'App\Views\auth\login.php';
-
-            break;
-         case 'register':
-            require 'App\Views\auth\register.php';
-            break;
-        default:
-        echo "page not found";
-            break;
-       }
+            require "App/Views/auth/$page.php";
        }
 
     public function create(){

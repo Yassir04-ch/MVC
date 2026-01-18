@@ -49,7 +49,7 @@
                 <td><?= $user->getEmail(); ?></td>
                 <td><?= $user->getRole(); ?></td>
                 <td>
-                     <a href="/edit?id=<?= $user->getId(); ?>" class="btn btn-sm btn-warning">Edit</a>
+                     <a href="/update?id=<?= $user->getId(); ?>" class="btn btn-sm btn-warning">Edit</a>
                      <a href="/delete?id=<?= $user->getId(); ?>" class="btn btn-sm btn-danger" >Delete</a>
                 </td>
             </tr>

@@ -106,6 +106,13 @@ class User{
     $stmt->setFetchMode(PDO::FETCH_CLASS, User::class);
     return $stmt->fetch();
    }
+    public function getUserbyid($id) {
+    $query = "SELECT * FROM users WHERE id = ?";
+    $stmt = $this->conection->prepare($query);
+    $stmt->execute([$id]);
+    $stmt->setFetchMode(PDO::FETCH_CLASS, User::class);
+    return $stmt->fetch();
+   }
 
     public function create() {
         $sql = "INSERT INTO users
@@ -121,6 +128,17 @@ class User{
     $stmt = $this->conection->prepare($sql);
     $stmt->execute([$id]);
  }
+
+ public function updateuser() {
+        $query = 
+            "UPDATE users    
+             SET firstname='" . $this->firstname . "' , lastname='". $this->lastname 
+             ."' , email='". $this->email ."' , password='". $this->password . "' , role='". $this->role .
+              "' WHERE id = " . $this->id;
+      $stmt = $this->conection->prepare($query);
+      $stmt->execute();
+        return 0;
+    }
 
     
 }

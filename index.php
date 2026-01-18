@@ -9,7 +9,7 @@ require  'App\controllers\FrontController.php';
 
 // var_dump($_SERVER);
 
-$path = $_SERVER['PATH_INFO'] ?? '/home';
+$path = $_SERVER['PATH_INFO'] ?? '/login';
 
 
 switch ($path) {
@@ -20,7 +20,7 @@ switch ($path) {
     case "/admin" :
 
         $controller = new AdminController();
-            $admin = $controller->index();
+            $admin = $controller->index('admin');
         
         break;
     case '/register':
@@ -51,6 +51,17 @@ switch ($path) {
             $controller->delete();
         } 
          $controller->index();
+     break;
+     case '/update':
+         $controller = new AdminController();
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+         $controller->index('update');
+
+        }     
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+         $controller->update();
+        }       
+
      break;
    case '/user':
          $controller = new FrontController();
