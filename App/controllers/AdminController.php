@@ -1,5 +1,6 @@
 <?php
-
+namespace App\Controllers;
+use App\Core\Session;
 use App\Models\User;
 
 class AdminController{
@@ -8,7 +9,7 @@ class AdminController{
         case 'admin':
         $user = new User();
         $users = $user->findAll();
-        session_start();
+        Session::start();
         require "App\Views\back\admin.php";
         break;
        case 'update':

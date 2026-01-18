@@ -1,6 +1,5 @@
 <?php
-require_once __DIR__ . '/../Core/Session.php';
-
+namespace App\Controllers;
 use App\Core\Session;
 use App\Models\User;
 class AuthController{
